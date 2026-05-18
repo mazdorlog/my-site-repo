@@ -1,14 +1,44 @@
-body {
+/* Reset default spacing */
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Page base styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #222;
+  min-height: 100vh;
+
+  /* Better centering approach */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main container */
 .container {
   text-align: center;
-  margin-top: 100px;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
 }
 
+/* Heading */
 h1 {
+  font-size: 2rem;
   color: #333;
+  margin-bottom: 10px;
+}
+
+/* Paragraph */
+p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
 }
