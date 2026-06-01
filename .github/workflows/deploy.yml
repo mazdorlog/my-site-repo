@@ -14,17 +14,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Upload Website Files to EC2
+      - name: Upload Website Files
         uses: appleboy/scp-action@v0.1.7
 
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "."
-          target: "/var/www/html"
 
-      - name: Restart Nginx
+          source: "index.html,styles.css"
+          target: "/home/ubuntu/site-temp"
+
+      - name: Deploy Files to Nginx
         uses: appleboy/ssh-action@v1.0.3
 
         with:
@@ -33,6 +34,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
+            sudo mkdir -p /var/www/html
+            sudo cp -r /home/ubuntu/site-temp/* /var/www/html/
             sudo systemctl restart nginx
             sudo systemctl status nginx
-
