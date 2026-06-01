@@ -34,7 +34,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-            sudo mkdir -p /var/www/html
-            sudo cp -r /home/ubuntu/site-temp/* /var/www/html/
-            sudo systemctl restart nginx
-            sudo systemctl status nginx
+  	    sudo rm -rf /var/www/mysite/*
+  	    sudo cp -r /home/ubuntu/site-temp/* /var/www/mysite/
+  	    sudo systemctl restart nginx
