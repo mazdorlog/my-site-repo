@@ -12,7 +12,6 @@ body {
   color: #222;
   min-height: 100vh;
 
-  /* Better centering approach */
   display: flex;
   justify-content: center;
   align-items: center;
