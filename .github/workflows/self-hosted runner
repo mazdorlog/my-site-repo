@@ -1,4 +1,4 @@
-name: Self Hosted Deployment v2
+name: Deploy Website
 
 on:
   push:
@@ -10,24 +10,8 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Copy Files
-        run: |
-          sudo rm -rf /var/www/myapp/*
-          sudo cp -r . /var/www/myapp/
-
-      - name: Install Dependencies
-        run: |
-          cd /var/www/myapp
-          npm install
-
-      - name: Build App
-        run: |
-          cd /var/www/myapp
-          npm run build
-
-      - name: Restart PM2
-        run: |
-          pm2 restart app
+      - name: Test Deployment
+        run: echo "Deployment Started"
