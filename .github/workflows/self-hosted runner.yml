@@ -1,0 +1,28 @@
+name: Self Hosted Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Website
+        run: |
+          sudo mkdir -p /var/www/myapp
+
+          sudo rsync -av --delete ./ /var/www/myapp/
+
+          cd /var/www/myapp
+
+          npm install
+
+          npm run build
+
+          pm2 restart app || pm2 start npm --name "app" -- start
