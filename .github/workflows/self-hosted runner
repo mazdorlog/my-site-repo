@@ -14,9 +14,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy
-          run: |
-            cd /var/www/myapp
-            git pull
-            npm install
-            npm run build
-            pm2 restart app
+        run: |
+          cd /var/www/myapp
+          git pull
+          npm install
+          npm run build
+          pm2 restart app
