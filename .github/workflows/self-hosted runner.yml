@@ -1,4 +1,4 @@
-name: Self Hosted Deploy
+name: Deploy Static Website
 
 on:
   push:
@@ -13,16 +13,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Deploy 
+      - name: Deploy Website
         run: |
-          sudo mkdir -p /var/www/myapp
+          sudo mkdir -p /var/www/html
 
-          sudo rsync -av --delete ./ /var/www/myapp/
-
-          cd /var/www/myapp
-
-          npm install
-
-          npm run build
-
-          pm2 restart app || pm2 start npm --name "app" -- start
+          sudo rsync -av --delete ./ /var/www/html/
