@@ -1,4 +1,4 @@
-name: Self Hosted Deployment
+name: Self Hosted Deployment v2
 
 on:
   push:
