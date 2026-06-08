@@ -13,8 +13,10 @@ jobs:
       - name: Download Repository
         uses: actions/checkout@v4
 
-      - name: Deploy Website Files
-        run: |
-          sudo rm -rf /var/www/mysite/*
-          sudo cp -r * /var/www/mysite/
-          sudo systemctl restart nginx
+      - name: Deploy
+          run: |
+            cd /var/www/myapp
+            git pull
+            npm install
+            npm run build
+            pm2 restart app
