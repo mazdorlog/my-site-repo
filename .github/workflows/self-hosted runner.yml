@@ -1,4 +1,4 @@
-name: Deploy Static Website
+name: Deploy Website
 
 on:
   push:
@@ -10,11 +10,12 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Deploy Website
         run: |
-          sudo mkdir -p /var/www/html
+          sudo mkdir -p /var/www/mysite
 
-          sudo rsync -av --delete ./ /var/www/html/
+          sudo rsync -av --delete ./ /var/www/mysite/
+
+          sudo systemctl restart nginx
